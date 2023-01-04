@@ -1,0 +1,69 @@
+<%- include('header') %>
+    <h1>בחר את המשמרות שלך לשבוע הבא</h1>
+    <div class="float-container">
+        <form method="post" action="/create">
+            <div class="float-child">
+                <h2>משמשרת ערב</h2>
+
+                <input type="radio" name="nightShift" value="sunday">
+                <label>יום ראשון</label> <br>
+                <input type="radio" name="nightShift" value="monday">
+                <label>יום שני </label> <br>
+                <input type="radio" name="nightShift" value="thuseday">
+                <label>יום שלישי</label> <br>
+                <input type="radio" name="nightShift" value="wednesday">
+                <label>יום רביעי</label>
+
+            </div>
+
+
+
+
+            <div class="float-child">
+                <h2>משמרת בוקר</h2>
+                <input type="checkbox" name="sunday" value="sunday" id="sunday">
+                <label>יום ראשון</label><br>
+                <input type="checkbox" name="monday" value="monday" id="monday">
+                <label>יום שני</label><br>
+                <input type="checkbox" name="thuseday" value="thuseday" id="thuseday">
+                <label>יום שלישי</label><br>
+                <input type="checkbox" name="wednesday" value="wednesday" id="wednesday">
+                <label>יום רביעי </label><br>
+                <input type="checkbox" name="thursday" value="thursday" id="thursday">
+                <label>יום חמישי</label><br>
+            </div>
+            <button type="submit" name="submit">שלח</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <script>
+
+        $("input[name='nightShift']").on("click", function(){
+            let radioChecked = $("input[name='nightShift']:checked").val();
+            nextDayRemove(radioChecked);
+        });
+        function nextDayRemove(radioValue) {
+            switch (radioValue) {
+                case "sunday":
+                    $('#monday').on("click", false)
+                    alert('hi');
+                    break;
+                case "monday":
+                    $('#thuseday').on("click", false)
+                    break;
+                case "thuseday":
+                    $('#wednesday').on("click", false)
+                    break;
+                case "wednesday":
+                    $('#thursday').on("click", false)
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+    </script>
+
+    <%- include('footer') %>
